@@ -22,11 +22,4 @@ A simple CRM (Customer Relationship Management) application built with React.js 
   - Express.js
   - MongoDB (with Mongoose for ORM)
 
-## Setup
 
-### Frontend
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/crm-frontend.git
