@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import AddContact from './components/AddContact';
+import './styles/App.css';
 
-function App() {
+const App = () => {
+  const [contacts, setContacts] = useState([
+    { id: 1, name: 'Shyam singh', email: 'shyam@example.com', phone: '123-456-7890' },
+    { id: 2, name: 'Ramkrishna', email: 'rk@example.com', phone: '098-765-4321' }
+  ]);
+
+  const addContact = (contact) => {
+    setContacts([...contacts, contact]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home contacts={contacts} />} />
+          <Route path="/contacts/:id" element={<Contact contacts={contacts} />} />
+          <Route path="/add-contact" element={<AddContact addContact={addContact} />} />
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
